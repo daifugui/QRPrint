@@ -114,5 +114,24 @@ namespace QRPrint
                 ;
             }
         }
+
+        List<char> list_ss = new List<char>();
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // this.Text = e.KeyChar.ToString();
+            char cc = e.KeyChar;
+            if (cc == '\r')
+            {
+                this.Text = new string(list_ss.ToArray());
+                list_ss.Clear();
+            }
+            else
+            {
+                list_ss.Add(cc);
+            }
+
+        }
+
+       
     }
 }
