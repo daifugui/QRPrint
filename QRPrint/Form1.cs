@@ -122,8 +122,25 @@ namespace QRPrint
             char cc = e.KeyChar;
             if (cc == '\r')
             {
-                this.Text = new string(list_ss.ToArray());
+                this.tb_i_no.Text = new string(list_ss.ToArray());
                 list_ss.Clear();
+                if (list_ss.Count() != 0)
+                {
+                    if (tb_i_no.Text.Equals(tb_e_no.Text))
+                    {
+                        // int tn = Convert.ToInt32(this.tb_finished_num.Text);
+                        // tn++;
+                        //this.tb_finished_num.Text = tn.ToString();
+                        Settings.Default.Finished_num++;
+                        Settings.Default.Last_test_day = DateTime.Now.ToString("yyyy-MM-dd");
+                        Settings.Default.Save();
+                        this.tb_finished_num.Text = Settings.Default.Finished_num.ToString();
+
+
+
+                    }
+
+                }
             }
             else
             {
