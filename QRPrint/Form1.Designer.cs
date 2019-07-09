@@ -63,8 +63,8 @@
             // manageToolStripMenuItem
             // 
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            this.manageToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
-            this.manageToolStripMenuItem.Text = "Manage";
+            this.manageToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.manageToolStripMenuItem.Text = "后台管理";
             this.manageToolStripMenuItem.Click += new System.EventHandler(this.manageToolStripMenuItem_Click);
             // 
             // textBox1
