@@ -23,6 +23,15 @@ namespace QRPrint
         {
             if (form2.ShowDialog(this) == DialogResult.OK)
             {
+                
+                if(!(tb_e_no.Text).Equals(Settings.Default.No)|| !this.tb_checker.Text.Equals(Settings.Default.Checker))
+                {
+                    this.tb_finished_num.Text = "0";
+                    Settings.Default.Finished_num = 0;
+                    Settings.Default.Save();
+                    this.tb_i_no.Text = "";
+                    this.label6.Text = "";
+                }
                 this.tb_checker.Text = Settings.Default.Checker;
                 this.tb_target_num.Text = Settings.Default.Target_num.ToString();
                 this.tb_e_no.Text = Settings.Default.No;
@@ -45,6 +54,8 @@ namespace QRPrint
                 this.tb_finished_num.Text = "0";
                 Settings.Default.Finished_num = 0;
                 Settings.Default.Save();
+                this.tb_i_no.Text = "";
+                this.label6.Text = "";
             }
 
             this.tb_checker.Text = Settings.Default.Checker;
@@ -71,6 +82,8 @@ namespace QRPrint
                 this.tb_finished_num.Text = "0";
                 Settings.Default.Finished_num = 0;
                 Settings.Default.Save();
+                this.tb_i_no.Text = "";
+                this.label6.Text = "";
             }
 
         }
@@ -124,7 +137,8 @@ namespace QRPrint
             {
                 this.tb_i_no.Text = new string(list_ss.ToArray());
                 list_ss.Clear();
-                if (list_ss.Count() != 0)
+                //if (list_ss.Count() != 0)
+                if(!string.IsNullOrEmpty(tb_i_no.Text))
                 {
                     if (tb_i_no.Text.Equals(tb_e_no.Text))
                     {
@@ -135,8 +149,21 @@ namespace QRPrint
                         Settings.Default.Last_test_day = DateTime.Now.ToString("yyyy-MM-dd");
                         Settings.Default.Save();
                         this.tb_finished_num.Text = Settings.Default.Finished_num.ToString();
-
-
+                        this.textBox1.Text = "\r\nOK";
+                        this.textBox1.BackColor = Color.Green;
+                    }
+                    else
+                    {
+                        this.textBox1.Text = "\r\nNG";
+                        this.textBox1.BackColor = Color.Red;
+                    }
+                    if (Settings.Default.Finished_num >= Settings.Default.Target_num)
+                    {
+                        this.label6.Text = "目标已完成";
+                    }
+                    else
+                    {
+                        this.label6.Text = "目标未完成";
 
                     }
 
@@ -149,6 +176,6 @@ namespace QRPrint
 
         }
 
-       
+        
     }
 }
