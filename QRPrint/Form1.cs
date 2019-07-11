@@ -68,6 +68,7 @@ namespace QRPrint
             //path.AddEllipse(this.textBox1.ClientRectangle);
             path.AddEllipse(this.textBox1.ClientRectangle.X + 3, this.textBox1.ClientRectangle.Y + 3, this.textBox1.ClientRectangle.Width - 6, this.textBox1.ClientRectangle.Height - 6);
             this.textBox1.Region = new Region(path);
+            serialPort3.Open();
            // textBox1.TextAlign = HorizontalAlignment.Center;
         }
 
@@ -151,21 +152,42 @@ namespace QRPrint
                         this.tb_finished_num.Text = Settings.Default.Finished_num.ToString();
                         this.textBox1.Text = "\r\nOK";
                         this.textBox1.BackColor = Color.Green;
+
+
+                        if (Settings.Default.Finished_num == Settings.Default.Target_num)
+                        {
+                            this.label6.BackColor = Color.Green;
+                            this.label6.Text = "目标已完成";
+                            string print_com_ss = "^XA\r\n"
+                                     + "^FT370,200^A0N,40,30^FD" + tb_checker.Text + "^FS\r\n"
+                                     + "^FT370,300^A0N,40,30^FD" + tb_e_no.Text + "^FS\r\n"
+                                    + "^XZ";
+                            serialPort3.WriteLine(print_com_ss);
+                            //MessageBox.Show("目标已完成！！！");
+                        }
+                        else if (Settings.Default.Finished_num > Settings.Default.Target_num)
+                        {
+                            Settings.Default.Finished_num = 1;
+                            Settings.Default.Save();
+                            this.tb_finished_num.Text = Settings.Default.Finished_num.ToString();
+                            this.label6.BackColor = Color.Red;
+                            this.label6.Text = "目标未完成";
+                        }
+                        else
+                        {
+                            this.label6.BackColor = Color.Red;
+                            this.label6.Text = "目标未完成";
+
+                        }
+
+
                     }
                     else
                     {
                         this.textBox1.Text = "\r\nNG";
                         this.textBox1.BackColor = Color.Red;
                     }
-                    if (Settings.Default.Finished_num >= Settings.Default.Target_num)
-                    {
-                        this.label6.Text = "目标已完成";
-                    }
-                    else
-                    {
-                        this.label6.Text = "目标未完成";
-
-                    }
+                    
 
                 }
             }
@@ -176,6 +198,9 @@ namespace QRPrint
 
         }
 
-        
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            serialPort3.Close();
+        }
     }
 }
