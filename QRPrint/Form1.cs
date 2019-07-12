@@ -68,6 +68,7 @@ namespace QRPrint
             //path.AddEllipse(this.textBox1.ClientRectangle);
             path.AddEllipse(this.textBox1.ClientRectangle.X + 3, this.textBox1.ClientRectangle.Y + 3, this.textBox1.ClientRectangle.Width - 6, this.textBox1.ClientRectangle.Height - 6);
             this.textBox1.Region = new Region(path);
+            serialPort2.Open();
             serialPort3.Open();
            // textBox1.TextAlign = HorizontalAlignment.Center;
         }
@@ -152,6 +153,8 @@ namespace QRPrint
                         this.tb_finished_num.Text = Settings.Default.Finished_num.ToString();
                         this.textBox1.Text = "\r\nOK";
                         this.textBox1.BackColor = Color.Green;
+                        byte[] sendbuf = { 0x7e, 0x05,0x41,0x00,0x01,0x45,0xef };
+                        serialPort2.Write(sendbuf, 0, 7);
 
 
                         if (Settings.Default.Finished_num == Settings.Default.Target_num)
@@ -159,10 +162,15 @@ namespace QRPrint
                             this.label6.BackColor = Color.Green;
                             this.label6.Text = "目标已完成";
                             string print_com_ss = "^XA\r\n"
-                                     + "^FT370,200^A0N,40,30^FD" + tb_checker.Text + "^FS\r\n"
-                                     + "^FT370,300^A0N,40,30^FD" + tb_e_no.Text + "^FS\r\n"
+                                     + "^FT300,100^A0N,150,150^FD" + "OK" + "^FS\r\n"
+                                     + "^FT150,200^A0N,50,50^FD" +"Checker:"+ tb_checker.Text + "^FS\r\n"
+                                     + "^FT150,300^A0N,50,50^FD" +"Trace No.:"+ tb_e_no.Text + "^FS\r\n"
+                                     + "^FT300,365^A0N,50,50^FD" + "INFAC" + "^FS\r\n"
                                     + "^XZ";
                             serialPort3.WriteLine(print_com_ss);
+
+                            byte[] sendbuf1 = { 0x7e, 0x05, 0x41, 0x00, 0x03, 0x47, 0xef };
+                            serialPort2.Write(sendbuf1, 0, 7);
                             //MessageBox.Show("目标已完成！！！");
                         }
                         else if (Settings.Default.Finished_num > Settings.Default.Target_num)
@@ -186,6 +194,8 @@ namespace QRPrint
                     {
                         this.textBox1.Text = "\r\nNG";
                         this.textBox1.BackColor = Color.Red;
+                        byte[] sendbuf = { 0x7e, 0x05, 0x41, 0x00, 0x02, 0x46, 0xef };
+                        serialPort2.Write(sendbuf, 0, 7);
                     }
                     
 
@@ -200,6 +210,7 @@ namespace QRPrint
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            serialPort2.Close();
             serialPort3.Close();
         }
     }

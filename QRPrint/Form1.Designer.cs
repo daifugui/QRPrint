@@ -208,6 +208,10 @@
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
+            // serialPort2
+            // 
+            this.serialPort2.PortName = "COM12";
+            // 
             // serialPort3
             // 
             this.serialPort3.PortName = "COM3";
