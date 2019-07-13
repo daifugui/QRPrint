@@ -57,7 +57,7 @@
             this.manageToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(825, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1008, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -71,12 +71,13 @@
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.Red;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F);
-            this.textBox1.Location = new System.Drawing.Point(585, 70);
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F);
+            this.textBox1.Location = new System.Drawing.Point(713, 84);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(215, 232);
+            this.textBox1.Size = new System.Drawing.Size(283, 272);
             this.textBox1.TabIndex = 1;
             this.textBox1.TabStop = false;
             this.textBox1.Text = "\r\nNG";
@@ -85,30 +86,30 @@
             // 
             // tb_e_no
             // 
-            this.tb_e_no.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_e_no.Location = new System.Drawing.Point(209, 148);
+            this.tb_e_no.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
+            this.tb_e_no.Location = new System.Drawing.Point(280, 178);
             this.tb_e_no.Name = "tb_e_no";
             this.tb_e_no.ReadOnly = true;
-            this.tb_e_no.Size = new System.Drawing.Size(357, 53);
+            this.tb_e_no.Size = new System.Drawing.Size(393, 68);
             this.tb_e_no.TabIndex = 5;
             this.tb_e_no.TabStop = false;
             this.tb_e_no.Text = "100010";
             // 
             // tb_target_num
             // 
-            this.tb_target_num.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_target_num.Location = new System.Drawing.Point(194, 236);
+            this.tb_target_num.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
+            this.tb_target_num.Location = new System.Drawing.Point(280, 263);
             this.tb_target_num.Name = "tb_target_num";
             this.tb_target_num.ReadOnly = true;
-            this.tb_target_num.Size = new System.Drawing.Size(163, 53);
+            this.tb_target_num.Size = new System.Drawing.Size(163, 68);
             this.tb_target_num.TabIndex = 6;
             this.tb_target_num.TabStop = false;
             this.tb_target_num.Text = "100";
             // 
             // tb_checker
             // 
-            this.tb_checker.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_checker.Location = new System.Drawing.Point(657, 368);
+            this.tb_checker.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.tb_checker.Location = new System.Drawing.Point(829, 615);
             this.tb_checker.Name = "tb_checker";
             this.tb_checker.ReadOnly = true;
             this.tb_checker.Size = new System.Drawing.Size(154, 53);
@@ -119,20 +120,20 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.label3.Location = new System.Drawing.Point(12, 148);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
+            this.label3.Location = new System.Drawing.Point(16, 178);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(191, 46);
+            this.label3.Size = new System.Drawing.Size(258, 63);
             this.label3.TabIndex = 2;
             this.label3.Text = "期望品号:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.label2.Location = new System.Drawing.Point(37, 236);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
+            this.label2.Location = new System.Drawing.Point(70, 266);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(151, 46);
+            this.label2.Size = new System.Drawing.Size(204, 63);
             this.label2.TabIndex = 3;
             this.label2.Text = "目标数:";
             // 
@@ -140,29 +141,29 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.label1.Location = new System.Drawing.Point(471, 368);
+            this.label1.Location = new System.Drawing.Point(596, 615);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(180, 46);
+            this.label1.Size = new System.Drawing.Size(227, 46);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Checker:";
+            this.label1.Text = "CHECKER:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.label4.Location = new System.Drawing.Point(37, 298);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
+            this.label4.Location = new System.Drawing.Point(70, 329);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(151, 46);
+            this.label4.Size = new System.Drawing.Size(204, 63);
             this.label4.TabIndex = 3;
             this.label4.Text = "完成数:";
             // 
             // tb_finished_num
             // 
-            this.tb_finished_num.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_finished_num.Location = new System.Drawing.Point(194, 295);
+            this.tb_finished_num.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
+            this.tb_finished_num.Location = new System.Drawing.Point(280, 337);
             this.tb_finished_num.Name = "tb_finished_num";
             this.tb_finished_num.ReadOnly = true;
-            this.tb_finished_num.Size = new System.Drawing.Size(163, 53);
+            this.tb_finished_num.Size = new System.Drawing.Size(163, 68);
             this.tb_finished_num.TabIndex = 6;
             this.tb_finished_num.TabStop = false;
             this.tb_finished_num.Text = "10";
@@ -176,20 +177,20 @@
             // lb_dt
             // 
             this.lb_dt.AutoSize = true;
-            this.lb_dt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.lb_dt.Location = new System.Drawing.Point(492, 444);
+            this.lb_dt.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.lb_dt.Location = new System.Drawing.Point(596, 675);
             this.lb_dt.Name = "lb_dt";
-            this.lb_dt.Size = new System.Drawing.Size(265, 31);
+            this.lb_dt.Size = new System.Drawing.Size(387, 46);
             this.lb_dt.TabIndex = 8;
             this.lb_dt.Text = "2019-06-30 18:23:56";
             // 
             // tb_i_no
             // 
-            this.tb_i_no.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_i_no.Location = new System.Drawing.Point(209, 67);
+            this.tb_i_no.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
+            this.tb_i_no.Location = new System.Drawing.Point(280, 104);
             this.tb_i_no.Name = "tb_i_no";
             this.tb_i_no.ReadOnly = true;
-            this.tb_i_no.Size = new System.Drawing.Size(357, 53);
+            this.tb_i_no.Size = new System.Drawing.Size(393, 68);
             this.tb_i_no.TabIndex = 10;
             this.tb_i_no.TabStop = false;
             this.tb_i_no.Text = "100";
@@ -197,10 +198,10 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.label5.Location = new System.Drawing.Point(12, 70);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
+            this.label5.Location = new System.Drawing.Point(16, 104);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(191, 46);
+            this.label5.Size = new System.Drawing.Size(258, 63);
             this.label5.TabIndex = 9;
             this.label5.Text = "扫描品号:";
             // 
@@ -220,10 +221,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.label6.Font = new System.Drawing.Font("SimSun", 40F);
-            this.label6.Location = new System.Drawing.Point(45, 378);
+            this.label6.Font = new System.Drawing.Font("SimSun", 60F);
+            this.label6.Location = new System.Drawing.Point(35, 483);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(293, 54);
+            this.label6.Size = new System.Drawing.Size(434, 80);
             this.label6.TabIndex = 11;
             this.label6.Text = "目标未完成";
             // 
@@ -231,7 +232,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(825, 487);
+            this.BackColor = System.Drawing.Color.SeaGreen;
+            this.ClientSize = new System.Drawing.Size(1008, 730);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tb_i_no);
             this.Controls.Add(this.label5);
@@ -249,7 +251,9 @@
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Text = "QRPrint";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);

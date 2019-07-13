@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -68,8 +69,15 @@ namespace QRPrint
             //path.AddEllipse(this.textBox1.ClientRectangle);
             path.AddEllipse(this.textBox1.ClientRectangle.X + 3, this.textBox1.ClientRectangle.Y + 3, this.textBox1.ClientRectangle.Width - 6, this.textBox1.ClientRectangle.Height - 6);
             this.textBox1.Region = new Region(path);
-            serialPort2.Open();
-            serialPort3.Open();
+            try
+            {
+                serialPort2.Open();
+                serialPort3.Open();
+            }
+            catch 
+            {
+                MessageBox.Show("serial port open error!!!");
+            }
            // textBox1.TextAlign = HorizontalAlignment.Center;
         }
 
@@ -130,6 +138,143 @@ namespace QRPrint
             }
         }
 
+
+        private static string Chinese2ZPLStringxxx(string css)
+        { //13,13,8
+            int sn = css.Length;
+            Bitmap bmp = new Bitmap(13 * sn, 13);
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                g.Clear(Color.Black);
+                Font drawFont = new Font("Arial", 8);
+                SolidBrush drawBrush = new SolidBrush(Color.White);
+                g.DrawString(css, drawFont, drawBrush, 0, 0);
+            }
+            Color srcColor;
+            int wide = bmp.Width;
+            int height = bmp.Height;
+            string cssHex = "\r\n";
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < wide; x++)
+                {
+                    srcColor = bmp.GetPixel(x, y);
+                    cssHex += srcColor.R.ToString("X2");
+                }
+                cssHex += "\r\n";
+            }
+
+            bmp.Dispose();
+
+            string ss1 = "~DGcName," + (wide * height).ToString() + "," + wide.ToString() + "," + cssHex;
+            return ss1;
+        }
+
+
+        private static string Chinese2ZPLString(string css)
+        {
+            int sn = css.Length;
+            Bitmap bmp = new Bitmap(64 * sn, 60);
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                g.Clear(Color.Black);
+                Font drawFont = new Font("Arial", 40);
+                SolidBrush drawBrush = new SolidBrush(Color.White);
+                g.DrawString(css, drawFont, drawBrush, 0, 0);
+            }
+           
+            Color srcColor;
+            int wide = bmp.Width;
+            int height = bmp.Height;
+            string cssHex = "\r\n";
+            for (int y = 0; y < height; y++)
+            {
+                int k = 0;
+                int s = 0;
+                for (int x = 0; x < wide; x++)
+                {
+                    srcColor = bmp.GetPixel(x, y);
+                    // cssHex += srcColor.R.ToString("X2");
+                    s = s << 1;
+                    s = s | (srcColor.R > 0 ? 1 : 0);
+                    k++;
+                    if (k % 8 == 0)
+                    {
+                        cssHex += (s & 0xff).ToString("X2");
+                        s = 0;
+                    }
+                }
+                cssHex += "\r\n";
+              
+            }
+
+            //  bmp.Dispose();
+
+            string ss1 = "~DGcName," + (wide / 8 * height).ToString() + "," + (wide / 8).ToString() + "," + cssHex;
+            return ss1;
+        }
+
+  
+        private static string ZPLWriteChineseSS(int px, int py, string css)
+        {
+            string css1 = Chinese2ZPLString(css);
+            return css1 + "^FT" + px.ToString() + "," + py.ToString() + "^XGcName,1,1^FS\r\n";
+        }
+        static bool ContainChinese(string input)
+        {
+            string pattern = "[\u4e00-\u9fbb]";
+            return Regex.IsMatch(input, pattern);
+        }
+
+        private void printlabel()
+        {
+            if (ContainChinese(tb_checker.Text))
+            {
+                string print_com_ss = "^XA\r\n"
+                                 + "^FT300,150^A0N,150,150^FD" + "OK" + "^FS\r\n"
+                                 + "^FT150,220^A0N,50,50^FD" + "CHECKER:" + "^FS\r\n"
+                                 + ZPLWriteChineseSS(360,240, tb_checker.Text)
+                                 + "^FT150,300^A0N,50,50^FD" + "TRACE NO.:" + tb_e_no.Text + "^FS\r\n"
+                                 + "^FT350,365^A0N,50,50^FD" + "INFAC" + "^FS\r\n"
+                                + "^XZ";
+                serialPort3.WriteLine(print_com_ss);
+            }
+            else
+            {
+                string print_com_ss = "^XA\r\n"
+                                  + "^FT300,150^A0N,150,150^FD" + "OK" + "^FS\r\n"
+                                  + "^FT150,220^A0N,50,50^FD" + "CHECKER:" + tb_checker.Text + "^FS\r\n"
+                                  + "^FT150,300^A0N,50,50^FD" + "TRACE NO.:" + tb_e_no.Text + "^FS\r\n"
+                                  + "^FT350,365^A0N,50,50^FD" + "INFAC" + "^FS\r\n"
+                                 + "^XZ";
+                serialPort3.WriteLine(print_com_ss);
+
+            }
+
+        }
+
+        void backupcode()
+        {
+            string print_com_ss = "^XA^CW1,ANMDJ.TTF^CI28\r\n"
+                                     + "^FT300,150^A0N,150,150^FD" + "OK" + "^FS\r\n"
+                                     + "^FT150,220^A0N,50,50^FD" + "CHECKER:" + tb_checker.Text + "^FS\r\n"
+                                     + "^FT150,300^A0N,50,50^FD" + "TRACE NO.:" + tb_e_no.Text + "^FS\r\n"
+                                     + "^FT350,365^A0N,50,50^FD" + "INFAC" + "^FS\r\n"
+                                    + "^XZ";
+            //CW1,SIMSUN.TTF
+            //SIMSUM.FNT
+            // string print_com_ss1 = "^XA^CWJ,E:MSUNG.FNT^FS\r\n"
+            //string print_com_ss1 = "^XA^CWJ,E:SIMSUN.FNT^FS\r\n"
+            string print_com_ss1 = "^XA^CW1,E:SIMSUN.TTF^FS\r\n"
+            + "^FT300,150^A0N,150,150^CI17^F8^FD" + "张三" + "^FS\r\n"
+            + "^FT300,250^A0N,150,150^CI28^FD" + "张三" + "^FS\r\n"
+                          //      + "^FO220,250^A@B,45,45,E:SIMSUN.FNT^CI17^F8^FD样张名称:^FS\r\n"
+                          //  + "^FT150,220^A0N,50,50^FD" + "CHECKER:" + tb_checker.Text + "^FS\r\n"
+                          //+ "^FT150,300^A0N,50,50^FD" + "TRACE NO.:" + tb_e_no.Text + "^FS\r\n"
+                          // + "^FT350,365^A0N,50,50^FD" + "INFAC" + "^FS\r\n"
+                          + "^XZ";
+            serialPort3.WriteLine(print_com_ss1);
+        }
         List<char> list_ss = new List<char>();
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -161,14 +306,7 @@ namespace QRPrint
                         {
                             this.label6.BackColor = Color.Green;
                             this.label6.Text = "目标已完成";
-                            string print_com_ss = "^XA\r\n"
-                                     + "^FT300,100^A0N,150,150^FD" + "OK" + "^FS\r\n"
-                                     + "^FT150,200^A0N,50,50^FD" +"Checker:"+ tb_checker.Text + "^FS\r\n"
-                                     + "^FT150,300^A0N,50,50^FD" +"Trace No.:"+ tb_e_no.Text + "^FS\r\n"
-                                     + "^FT300,365^A0N,50,50^FD" + "INFAC" + "^FS\r\n"
-                                    + "^XZ";
-                            serialPort3.WriteLine(print_com_ss);
-
+                            printlabel();
                             byte[] sendbuf1 = { 0x7e, 0x05, 0x41, 0x00, 0x03, 0x47, 0xef };
                             serialPort2.Write(sendbuf1, 0, 7);
                             //MessageBox.Show("目标已完成！！！");
