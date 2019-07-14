@@ -100,7 +100,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(43, 375);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(193, 47);
+            this.button1.Size = new System.Drawing.Size(193, 60);
             this.button1.TabIndex = 2;
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
@@ -111,7 +111,7 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(475, 375);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(193, 47);
+            this.button2.Size = new System.Drawing.Size(193, 60);
             this.button2.TabIndex = 2;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
