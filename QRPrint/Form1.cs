@@ -306,9 +306,11 @@ namespace QRPrint
                         {
                             this.label6.BackColor = Color.Green;
                             this.label6.Text = "目标已完成";
-                            printlabel();
+                            //printlabel();
                             byte[] sendbuf1 = { 0x7e, 0x05, 0x41, 0x00, 0x03, 0x47, 0xef };
                             serialPort2.Write(sendbuf1, 0, 7);
+                            for(int i=0;i< Settings.Default.Print_num;i++)
+                                 printlabel();
                             //MessageBox.Show("目标已完成！！！");
                         }
                         else if (Settings.Default.Finished_num > Settings.Default.Target_num)
