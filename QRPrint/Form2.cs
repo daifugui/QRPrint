@@ -23,6 +23,7 @@ namespace QRPrint
 
             Settings.Default.Checker=this.tb_checker.Text;
             Settings.Default.Target_num= Convert.ToInt32(this.tb_target_num.Text);
+            Settings.Default.No_0 = tb_no_0.Text;
             Settings.Default.No= tb_no.Text;
             Settings.Default.Print_num = Convert.ToInt32(this.tb_print_num.Text);
             Settings.Default.Save();
@@ -40,6 +41,7 @@ namespace QRPrint
         {
             this.tb_checker.Text = Settings.Default.Checker;
             this.tb_target_num.Text = Settings.Default.Target_num.ToString();
+            this.tb_no_0.Text = Settings.Default.No_0;
             this.tb_no.Text = Settings.Default.No;
             this.tb_print_num.Text= Settings.Default.Print_num.ToString();
         }

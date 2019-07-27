@@ -25,7 +25,7 @@ namespace QRPrint
             if (form2.ShowDialog(this) == DialogResult.OK)
             {
                 
-                if(!(tb_e_no.Text).Equals(Settings.Default.No)|| !this.tb_checker.Text.Equals(Settings.Default.Checker))
+                if(!(tb_e_no.Text).Equals(Settings.Default.No)|| !(tb_e_no_0.Text).Equals(Settings.Default.No_0)|| !this.tb_checker.Text.Equals(Settings.Default.Checker))
                 {
                     this.tb_finished_num.Text = "0";
                     Settings.Default.Finished_num = 0;
@@ -36,6 +36,7 @@ namespace QRPrint
                 this.tb_checker.Text = Settings.Default.Checker;
                 this.tb_target_num.Text = Settings.Default.Target_num.ToString();
                 this.tb_e_no.Text = Settings.Default.No;
+                this.tb_e_no_0.Text = Settings.Default.No_0;
             }
         }
 
@@ -61,6 +62,7 @@ namespace QRPrint
 
             this.tb_checker.Text = Settings.Default.Checker;
             this.tb_e_no.Text = Settings.Default.No;
+            this.tb_e_no_0.Text = Settings.Default.No_0;
             this.tb_target_num.Text = Settings.Default.Target_num.ToString();            
             this.tb_finished_num.Text = Settings.Default.Finished_num.ToString();
 
@@ -276,9 +278,12 @@ namespace QRPrint
             serialPort3.WriteLine(print_com_ss1);
         }
         List<char> list_ss = new List<char>();
+        
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // this.Text = e.KeyChar.ToString();
+            //e.Handled = false;
+            //MessageBox.Show("fds");
+             //this.Text = (i++).ToString();
             char cc = e.KeyChar;
             if (cc == '\r')
             {
@@ -287,7 +292,7 @@ namespace QRPrint
                 //if (list_ss.Count() != 0)
                 if(!string.IsNullOrEmpty(tb_i_no.Text))
                 {
-                    if (tb_i_no.Text.Equals(tb_e_no.Text))
+                    if (tb_i_no.Text.Equals(tb_e_no.Text)&& tb_i_no_0.Text.Equals(tb_e_no_0.Text))
                     {
                         // int tn = Convert.ToInt32(this.tb_finished_num.Text);
                         // tn++;
@@ -352,6 +357,30 @@ namespace QRPrint
         {
             serialPort2.Close();
             serialPort3.Close();
+        }
+
+        private void testToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string print_com_ss = "^XA\r\n"
+                                  + "^FT200,100^A0N,50,40^FD" + "PART NUMBER:84414111" + "^FS\r\n"
+                                  + "^FT150,220^A0N,50,50^FD" + "CHECKER:" + tb_checker.Text + "^FS\r\n"
+                                  + "^FT150,300^A0N,50,50^FD" + "TRACE NO.:" + tb_e_no.Text + "^FS\r\n"
+                                 // + "^FT350,365^A0N,50,50^FD" + "INFAC" + "^FS\r\n"
+                                 + "^XZ";
+            serialPort3.WriteLine(print_com_ss);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Text = "hello wolrd" ;
+        }
+
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (keyData == Keys.Enter)
+                return false;
+            else
+                return base.ProcessDialogKey(keyData);
         }
     }
 }

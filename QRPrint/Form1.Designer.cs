@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.manageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tb_e_no = new System.Windows.Forms.TextBox();
             this.tb_target_num = new System.Windows.Forms.TextBox();
@@ -49,13 +50,19 @@
             this.serialPort2 = new System.IO.Ports.SerialPort(this.components);
             this.serialPort3 = new System.IO.Ports.SerialPort(this.components);
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tb_e_no_0 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tb_i_no_0 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.manageToolStripMenuItem});
+            this.manageToolStripMenuItem,
+            this.testToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1008, 25);
@@ -68,6 +75,13 @@
             this.manageToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.manageToolStripMenuItem.Text = "后台管理";
             this.manageToolStripMenuItem.Click += new System.EventHandler(this.manageToolStripMenuItem_Click);
+            // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(41, 21);
+            this.testToolStripMenuItem.Text = "test";
+            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
             // textBox1
             // 
@@ -88,7 +102,7 @@
             // tb_e_no
             // 
             this.tb_e_no.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
-            this.tb_e_no.Location = new System.Drawing.Point(280, 178);
+            this.tb_e_no.Location = new System.Drawing.Point(280, 264);
             this.tb_e_no.Name = "tb_e_no";
             this.tb_e_no.ReadOnly = true;
             this.tb_e_no.Size = new System.Drawing.Size(393, 68);
@@ -99,7 +113,7 @@
             // tb_target_num
             // 
             this.tb_target_num.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
-            this.tb_target_num.Location = new System.Drawing.Point(280, 263);
+            this.tb_target_num.Location = new System.Drawing.Point(280, 349);
             this.tb_target_num.Name = "tb_target_num";
             this.tb_target_num.ReadOnly = true;
             this.tb_target_num.Size = new System.Drawing.Size(163, 68);
@@ -122,7 +136,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
-            this.label3.Location = new System.Drawing.Point(16, 178);
+            this.label3.Location = new System.Drawing.Point(16, 264);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(258, 63);
             this.label3.TabIndex = 2;
@@ -132,7 +146,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
-            this.label2.Location = new System.Drawing.Point(70, 266);
+            this.label2.Location = new System.Drawing.Point(70, 352);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(204, 63);
             this.label2.TabIndex = 3;
@@ -152,7 +166,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
-            this.label4.Location = new System.Drawing.Point(70, 329);
+            this.label4.Location = new System.Drawing.Point(70, 415);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(204, 63);
             this.label4.TabIndex = 3;
@@ -161,7 +175,7 @@
             // tb_finished_num
             // 
             this.tb_finished_num.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
-            this.tb_finished_num.Location = new System.Drawing.Point(280, 337);
+            this.tb_finished_num.Location = new System.Drawing.Point(280, 423);
             this.tb_finished_num.Name = "tb_finished_num";
             this.tb_finished_num.ReadOnly = true;
             this.tb_finished_num.Size = new System.Drawing.Size(163, 68);
@@ -188,7 +202,7 @@
             // tb_i_no
             // 
             this.tb_i_no.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
-            this.tb_i_no.Location = new System.Drawing.Point(280, 104);
+            this.tb_i_no.Location = new System.Drawing.Point(280, 190);
             this.tb_i_no.Name = "tb_i_no";
             this.tb_i_no.ReadOnly = true;
             this.tb_i_no.Size = new System.Drawing.Size(393, 68);
@@ -200,7 +214,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
-            this.label5.Location = new System.Drawing.Point(16, 104);
+            this.label5.Location = new System.Drawing.Point(16, 190);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(258, 63);
             this.label5.TabIndex = 9;
@@ -223,11 +237,65 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.label6.Font = new System.Drawing.Font("SimSun", 60F);
-            this.label6.Location = new System.Drawing.Point(35, 483);
+            this.label6.Location = new System.Drawing.Point(35, 584);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(434, 80);
             this.label6.TabIndex = 11;
             this.label6.Text = "目标未完成";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
+            this.label7.Location = new System.Drawing.Point(16, 116);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(258, 63);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "期望代码:";
+            // 
+            // tb_e_no_0
+            // 
+            this.tb_e_no_0.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
+            this.tb_e_no_0.Location = new System.Drawing.Point(280, 116);
+            this.tb_e_no_0.Name = "tb_e_no_0";
+            this.tb_e_no_0.ReadOnly = true;
+            this.tb_e_no_0.Size = new System.Drawing.Size(393, 68);
+            this.tb_e_no_0.TabIndex = 5;
+            this.tb_e_no_0.TabStop = false;
+            this.tb_e_no_0.Text = "100010";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
+            this.label8.Location = new System.Drawing.Point(16, 42);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(258, 63);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "扫描代码:";
+            // 
+            // tb_i_no_0
+            // 
+            this.tb_i_no_0.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
+            this.tb_i_no_0.Location = new System.Drawing.Point(280, 42);
+            this.tb_i_no_0.Name = "tb_i_no_0";
+            this.tb_i_no_0.ReadOnly = true;
+            this.tb_i_no_0.Size = new System.Drawing.Size(393, 68);
+            this.tb_i_no_0.TabIndex = 10;
+            this.tb_i_no_0.TabStop = false;
+            this.tb_i_no_0.Text = "100";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("SimSun", 32F);
+            this.button1.Location = new System.Drawing.Point(756, 441);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(185, 60);
+            this.button1.TabIndex = 12;
+            this.button1.TabStop = false;
+            this.button1.Text = "复位";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -235,14 +303,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaGreen;
             this.ClientSize = new System.Drawing.Size(1008, 730);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label6);
+            this.Controls.Add(this.tb_i_no_0);
             this.Controls.Add(this.tb_i_no);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.tb_e_no_0);
             this.Controls.Add(this.lb_dt);
             this.Controls.Add(this.tb_e_no);
             this.Controls.Add(this.tb_finished_num);
             this.Controls.Add(this.tb_target_num);
             this.Controls.Add(this.tb_checker);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -287,6 +360,12 @@
         private System.IO.Ports.SerialPort serialPort2;
         private System.IO.Ports.SerialPort serialPort3;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tb_e_no_0;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox tb_i_no_0;
+        private System.Windows.Forms.Button button1;
     }
 }
 

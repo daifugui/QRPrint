@@ -38,6 +38,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.tb_print_num = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tb_no_0 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -63,7 +65,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.label2.Location = new System.Drawing.Point(128, 161);
+            this.label2.Location = new System.Drawing.Point(128, 147);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(151, 46);
             this.label2.TabIndex = 0;
@@ -72,7 +74,7 @@
             // tb_target_num
             // 
             this.tb_target_num.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_target_num.Location = new System.Drawing.Point(294, 161);
+            this.tb_target_num.Location = new System.Drawing.Point(294, 147);
             this.tb_target_num.Name = "tb_target_num";
             this.tb_target_num.Size = new System.Drawing.Size(309, 53);
             this.tb_target_num.TabIndex = 3;
@@ -82,7 +84,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.label3.Location = new System.Drawing.Point(166, 277);
+            this.label3.Location = new System.Drawing.Point(166, 298);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 46);
             this.label3.TabIndex = 0;
@@ -91,7 +93,7 @@
             // tb_no
             // 
             this.tb_no.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_no.Location = new System.Drawing.Point(294, 277);
+            this.tb_no.Location = new System.Drawing.Point(294, 298);
             this.tb_no.Name = "tb_no";
             this.tb_no.Size = new System.Drawing.Size(309, 53);
             this.tb_no.TabIndex = 1;
@@ -138,6 +140,25 @@
             this.tb_print_num.TabIndex = 2;
             this.tb_print_num.Text = "1";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.label5.Location = new System.Drawing.Point(168, 225);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(111, 46);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "代码:";
+            // 
+            // tb_no_0
+            // 
+            this.tb_no_0.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_no_0.Location = new System.Drawing.Point(296, 225);
+            this.tb_no_0.Name = "tb_no_0";
+            this.tb_no_0.Size = new System.Drawing.Size(309, 53);
+            this.tb_no_0.TabIndex = 1;
+            this.tb_no_0.Text = "100010";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -146,10 +167,12 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tb_print_num);
+            this.Controls.Add(this.tb_no_0);
             this.Controls.Add(this.tb_no);
             this.Controls.Add(this.tb_target_num);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tb_checker);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -173,5 +196,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tb_print_num;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tb_no_0;
     }
 }

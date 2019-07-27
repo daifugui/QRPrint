@@ -94,5 +94,17 @@ namespace QRPrint.Properties {
                 this["Print_num"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string No_0 {
+            get {
+                return ((string)(this["No_0"]));
+            }
+            set {
+                this["No_0"] = value;
+            }
+        }
     }
 }
