@@ -416,8 +416,8 @@ namespace QRPrint
         private void button1_Click(object sender, EventArgs e)
         {
            // this.Text = "hello wolrd" ;
-           // byte[] sendbuf = { 0x7e, 0x05, 0x41, 0x00, 0x02, 0x46, 0xef };
-          //  serialPort2.Write(sendbuf, 0, 7);
+            byte[] sendbuf = { 0x7e, 0x03, 0x0e, 0x0d, 0xef };
+            serialPort2.Write(sendbuf, 0, 5);
         }
 
         protected override bool ProcessDialogKey(Keys keyData)
