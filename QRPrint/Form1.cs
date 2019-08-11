@@ -86,7 +86,7 @@ namespace QRPrint
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.lb_dt.Text=DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-
+           
             string nowdate = DateTime.Now.ToString("yyyy-MM-dd");
             string last_test_date = Settings.Default.Last_test_day;
             if (!nowdate.Equals(last_test_date))
@@ -94,7 +94,7 @@ namespace QRPrint
                 this.tb_finished_num.Text = "0";
                 Settings.Default.Finished_num = 0;
                 Settings.Default.Save();
-                this.tb_i_no.Text = "";
+                //this.tb_i_no.Text = "";
                 this.label6.Text = "";
             }
 
@@ -228,7 +228,7 @@ namespace QRPrint
             return Regex.IsMatch(input, pattern);
         }
 
-        private void printlabel()
+        private void printlabel0()
         {
             if (ContainChinese(tb_checker.Text))
             {
@@ -253,6 +253,19 @@ namespace QRPrint
 
             }
 
+        }
+
+        private void printlabel()
+        {
+            string print_com_ss = "^XA\r\n"
+                                + "^FT250,100^A0N,35,35^FD" + "PART NUMBER:" + tb_e_no_0.Text + "^FS\r\n"
+                                + "^FT250,150^A0N,35,35^FD" + "PART NAME:LEERASSY" + "^FS\r\n"
+                                + "^FT250,200^A0N,35,35^FD" + "QUANTITY:" + tb_target_num.Text + " EA" + "^FS\r\n"
+                                + "^FT250,250^A0N,35,35^FD" + "CHECKER:" + tb_checker.Text + "^FS\r\n"
+                                + "^FT250,300^A0N,35,35^FD" + "TRACE NO.:" + DateTime.Now.ToString("yyyy-MM-dd") + "^FS\r\n"
+                               // + "^FT350,365^A0N,50,50^FD" + "INFAC" + "^FS\r\n"
+                               + "^XZ";
+            serialPort3.WriteLine(print_com_ss);
         }
 
         void backupcode()
@@ -283,11 +296,20 @@ namespace QRPrint
         {
             //e.Handled = false;
             //MessageBox.Show("fds");
-             //this.Text = (i++).ToString();
+            //this.Text = (i++).ToString();
             char cc = e.KeyChar;
             if (cc == '\r')
             {
-                this.tb_i_no.Text = new string(list_ss.ToArray());
+                string inputs = new string(list_ss.ToArray());
+                string[] seps = { "Y","XP", "V" };
+                char[] sepcs = { 'Y','P', 'V' };
+                string[] inputss = inputs.Split(sepcs);
+                //string[] inputss = inputs.Split(seps, StringSplitOptions.RemoveEmptyEntries);
+
+                this.tb_i_no.Text = inputss[1];
+                this.tb_i_no_0.Text= inputss[2].Substring(0,8);
+
+                //this.tb_i_no.Text = new string(list_ss.ToArray());
                 list_ss.Clear();
                 //if (list_ss.Count() != 0)
                 if(!string.IsNullOrEmpty(tb_i_no.Text))
@@ -362,9 +384,11 @@ namespace QRPrint
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string print_com_ss = "^XA\r\n"
-                                  + "^FT200,100^A0N,50,40^FD" + "PART NUMBER:84414111" + "^FS\r\n"
-                                  + "^FT150,220^A0N,50,50^FD" + "CHECKER:" + tb_checker.Text + "^FS\r\n"
-                                  + "^FT150,300^A0N,50,50^FD" + "TRACE NO.:" + tb_e_no.Text + "^FS\r\n"
+                                  + "^FT250,100^A0N,35,35^FD" + "PART NUMBER:"+ tb_e_no_0.Text + "^FS\r\n"
+                                  + "^FT250,150^A0N,35,35^FD" + "PART NAME:LEERASSY" + "^FS\r\n"
+                                  + "^FT250,200^A0N,35,35^FD" + "QUANTITY:" + tb_target_num.Text + " EA"+"^FS\r\n"
+                                  + "^FT250,250^A0N,35,35^FD" + "CHECKER:" + tb_checker.Text + "^FS\r\n"
+                                  + "^FT250,300^A0N,35,35^FD" + "TRACE NO.:" + DateTime.Now.ToString("yyyy-MM-dd") + "^FS\r\n"
                                  // + "^FT350,365^A0N,50,50^FD" + "INFAC" + "^FS\r\n"
                                  + "^XZ";
             serialPort3.WriteLine(print_com_ss);
@@ -372,7 +396,9 @@ namespace QRPrint
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Text = "hello wolrd" ;
+           // this.Text = "hello wolrd" ;
+           // byte[] sendbuf = { 0x7e, 0x05, 0x41, 0x00, 0x02, 0x46, 0xef };
+          //  serialPort2.Write(sendbuf, 0, 7);
         }
 
         protected override bool ProcessDialogKey(Keys keyData)

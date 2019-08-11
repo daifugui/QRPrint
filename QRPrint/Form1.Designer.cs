@@ -81,6 +81,7 @@
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
             this.testToolStripMenuItem.Size = new System.Drawing.Size(41, 21);
             this.testToolStripMenuItem.Text = "test";
+            this.testToolStripMenuItem.Visible = false;
             this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
             // textBox1
@@ -88,7 +89,7 @@
             this.textBox1.BackColor = System.Drawing.Color.Red;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F);
-            this.textBox1.Location = new System.Drawing.Point(713, 84);
+            this.textBox1.Location = new System.Drawing.Point(720, 54);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
@@ -105,7 +106,7 @@
             this.tb_e_no.Location = new System.Drawing.Point(280, 264);
             this.tb_e_no.Name = "tb_e_no";
             this.tb_e_no.ReadOnly = true;
-            this.tb_e_no.Size = new System.Drawing.Size(393, 68);
+            this.tb_e_no.Size = new System.Drawing.Size(427, 68);
             this.tb_e_no.TabIndex = 5;
             this.tb_e_no.TabStop = false;
             this.tb_e_no.Text = "100010";
@@ -205,7 +206,7 @@
             this.tb_i_no.Location = new System.Drawing.Point(280, 190);
             this.tb_i_no.Name = "tb_i_no";
             this.tb_i_no.ReadOnly = true;
-            this.tb_i_no.Size = new System.Drawing.Size(393, 68);
+            this.tb_i_no.Size = new System.Drawing.Size(427, 68);
             this.tb_i_no.TabIndex = 10;
             this.tb_i_no.TabStop = false;
             this.tb_i_no.Text = "100";
@@ -259,7 +260,7 @@
             this.tb_e_no_0.Location = new System.Drawing.Point(280, 116);
             this.tb_e_no_0.Name = "tb_e_no_0";
             this.tb_e_no_0.ReadOnly = true;
-            this.tb_e_no_0.Size = new System.Drawing.Size(393, 68);
+            this.tb_e_no_0.Size = new System.Drawing.Size(427, 68);
             this.tb_e_no_0.TabIndex = 5;
             this.tb_e_no_0.TabStop = false;
             this.tb_e_no_0.Text = "100010";
@@ -280,13 +281,14 @@
             this.tb_i_no_0.Location = new System.Drawing.Point(280, 42);
             this.tb_i_no_0.Name = "tb_i_no_0";
             this.tb_i_no_0.ReadOnly = true;
-            this.tb_i_no_0.Size = new System.Drawing.Size(393, 68);
+            this.tb_i_no_0.Size = new System.Drawing.Size(427, 68);
             this.tb_i_no_0.TabIndex = 10;
             this.tb_i_no_0.TabStop = false;
             this.tb_i_no_0.Text = "100";
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.Yellow;
             this.button1.Font = new System.Drawing.Font("SimSun", 32F);
             this.button1.Location = new System.Drawing.Point(756, 441);
             this.button1.Name = "button1";
@@ -294,7 +296,7 @@
             this.button1.TabIndex = 12;
             this.button1.TabStop = false;
             this.button1.Text = "复位";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
