@@ -257,15 +257,31 @@ namespace QRPrint
 
         private void printlabel()
         {
-            string print_com_ss = "^XA\r\n"
-                                + "^FT250,100^A0N,35,35^FD" + "PART NUMBER:" + tb_e_no_0.Text + "^FS\r\n"
-                                + "^FT250,150^A0N,35,35^FD" + "PART NAME:LEERASSY" + "^FS\r\n"
-                                + "^FT250,200^A0N,35,35^FD" + "QUANTITY:" + tb_target_num.Text + " EA" + "^FS\r\n"
-                                + "^FT250,250^A0N,35,35^FD" + "CHECKER:" + tb_checker.Text + "^FS\r\n"
-                                + "^FT250,300^A0N,35,35^FD" + "TRACE NO.:" + DateTime.Now.ToString("yyyy-MM-dd") + "^FS\r\n"
-                               // + "^FT350,365^A0N,50,50^FD" + "INFAC" + "^FS\r\n"
-                               + "^XZ";
-            serialPort3.WriteLine(print_com_ss);
+            if (ContainChinese(tb_checker.Text))
+            {
+                string print_com_ss = "^XA\r\n"
+                                 + "^FT250,100^A0N,35,35^FD" + "PART NUMBER:" + tb_e_no_0.Text + "^FS\r\n"
+                                 + "^FT250,150^A0N,35,35^FD" + "PART NAME:LEERASSY" + "^FS\r\n"
+                                 + "^FT250,200^A0N,35,35^FD" + "QUANTITY:" + tb_target_num.Text + " EA" + "^FS\r\n"
+                                 // + "^FT250,250^A0N,35,35^FD" + "CHECKER:" + tb_checker.Text + "^FS\r\n"
+                                 + "^FT250,250^A0N,35,35^FD" + "CHECKER:" + "^FS\r\n"
+                                 + ZPLWriteChineseSS(386, 270, tb_checker.Text)
+                                 + "^FT250,300^A0N,35,35^FD" + "TRACE NO.:" + DateTime.Now.ToString("yyyy-MM-dd") + "^FS\r\n"
+                                 + "^XZ";
+                serialPort3.WriteLine(print_com_ss);
+            }
+            else
+            {
+                string print_com_ss = "^XA\r\n"
+                                    + "^FT250,100^A0N,35,35^FD" + "PART NUMBER:" + tb_e_no_0.Text + "^FS\r\n"
+                                    + "^FT250,150^A0N,35,35^FD" + "PART NAME:LEERASSY" + "^FS\r\n"
+                                    + "^FT250,200^A0N,35,35^FD" + "QUANTITY:" + tb_target_num.Text + " EA" + "^FS\r\n"
+                                    + "^FT250,250^A0N,35,35^FD" + "CHECKER:" + tb_checker.Text + "^FS\r\n"
+                                    + "^FT250,300^A0N,35,35^FD" + "TRACE NO.:" + DateTime.Now.ToString("yyyy-MM-dd") + "^FS\r\n"
+                                   // + "^FT350,365^A0N,50,50^FD" + "INFAC" + "^FS\r\n"
+                                   + "^XZ";
+                serialPort3.WriteLine(print_com_ss);
+            }
         }
 
         void backupcode()
@@ -387,11 +403,14 @@ namespace QRPrint
                                   + "^FT250,100^A0N,35,35^FD" + "PART NUMBER:"+ tb_e_no_0.Text + "^FS\r\n"
                                   + "^FT250,150^A0N,35,35^FD" + "PART NAME:LEERASSY" + "^FS\r\n"
                                   + "^FT250,200^A0N,35,35^FD" + "QUANTITY:" + tb_target_num.Text + " EA"+"^FS\r\n"
-                                  + "^FT250,250^A0N,35,35^FD" + "CHECKER:" + tb_checker.Text + "^FS\r\n"
+                                 // + "^FT250,250^A0N,35,35^FD" + "CHECKER:" + tb_checker.Text + "^FS\r\n"
+                                 + "^FT250,250^A0N,35,35^FD" + "CHECKER:" + "^FS\r\n"
+                                  + ZPLWriteChineseSS(386, 270, tb_checker.Text)
                                   + "^FT250,300^A0N,35,35^FD" + "TRACE NO.:" + DateTime.Now.ToString("yyyy-MM-dd") + "^FS\r\n"
                                  // + "^FT350,365^A0N,50,50^FD" + "INFAC" + "^FS\r\n"
                                  + "^XZ";
             serialPort3.WriteLine(print_com_ss);
+
         }
 
         private void button1_Click(object sender, EventArgs e)
